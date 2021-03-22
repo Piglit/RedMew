@@ -40,7 +40,7 @@ function CoinGathering.register(config)
             return
         end
 
-        local chest = surface.create_entity({name = 'steel-chest', position = position, force = game.forces.player})
+        local chest = surface.create_entity({name = 'bronze-chest', position = position, force = game.forces.player})
 
         if not chest then
             return

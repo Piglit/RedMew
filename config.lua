@@ -51,7 +51,7 @@ global.config = {
     },
     -- saves players' lives if they have a player-port in their inventory, also adds the player-port to the market and must therefor be loaded first
     train_saviour = {
-        enabled = true
+        enabled = false
     },
     -- Adds the infinite storage chest to the market and adds a custom GUI to it. Also has to be loaded first due to adding a market item
     infinite_storage_chest = {
@@ -83,7 +83,7 @@ global.config = {
     },
     -- enables dumping of inventories of offline players to a corpse at the player's last location
     dump_offline_inventories = {
-        enabled = true,
+        enabled = false,
         offline_timout_mins = 15,   -- time after which a player logs off that their inventory is provided to the team
     },
     -- enables players to create and prioritize tasks
@@ -107,7 +107,7 @@ global.config = {
     },
     -- adds a paint brush
     paint = {
-        enabled = true,
+        enabled = false,
         -- Sometimes the hidden tile information is lost, the fallback tile will be used when removing those tiles.
         fallback_hidden_tile = 'dirt-6',
         prevent_on_landfill = true
@@ -156,7 +156,7 @@ global.config = {
     reactor_meltdown = {
         enabled = true,
         -- when enabled, controls whether it's on by default. State can be controlled with the /meltdown command.
-        on_by_default = false
+        on_by_default = true
     },
     -- adds hodor responses to messages
     hodor = {
@@ -182,7 +182,7 @@ global.config = {
         show_info_at_start = true,
         -- prints messages when the player joins
         join_messages = {
-            'Welcome to this map created by the RedMew team. You can join our discord at: redmew.com/discord',
+            'Welcome to this map created by the RedMew team.',
             'Click the infomation icon in the top left corner for server information and map details.'
         },
         cutscene = false,
@@ -220,7 +220,7 @@ global.config = {
     },
     -- spawns more units when one dies
     hail_hydra = {
-        enabled = false,
+        enabled = true,
         -- enables difficulty scaling with number of online players
         -- if enabled you can disable it for individual spawns by setting {locked = true}
         online_player_scale_enabled = true,
@@ -228,7 +228,7 @@ global.config = {
         -- less online players than this number decreases the spawn chances
         -- more online players than this number increases the spawn chances
         -- the spawn chance is increased or decreased with 0.01 * (#connected_players - online_player_scale)
-        online_player_scale = 20,
+        online_player_scale = 4,
         -- any non-rounded number will turn into a chance to spawn an additional alien
         -- example: 2.5 would spawn 2 for sure and 50% chance to spawn one additionally
         -- min defines the lowest chance, max defines the max chance at evolution 1.

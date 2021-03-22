@@ -71,7 +71,7 @@ local Config = {
             robot_damage_per_mining_prod_level = 1,
 
             -- turn this setting on if you want to bring back landfill research, default is off due to griefing
-            allow_landfill_research = false,
+            allow_landfill_research = true,
         },
         -- adds the ability to collapse caves
         diggy_cave_collapse = {
@@ -176,7 +176,25 @@ local Config = {
                 ['productivity-module-2'] = {chance = 0.01, min = 1, max = 2},
                 ['speed-module'] = {chance = 0.03, min = 1, max = 2},
                 ['speed-module-2'] = {chance = 0.01, min = 1, max = 2},
-                ['small-lamp'] = {chance = 0.05, min = 1, max = 5}
+                ['small-lamp'] = {chance = 0.05, min = 1, max = 5},
+			    ["assembling-machine-1"] = {chance = 0.03, min = 1, max = 2},
+				["bronze-furnace"] = {chance = 0.03, min = 1, max = 6},
+				["bronze-ingot"] = {chance = 0.20, min = 30, max = 100},
+				["copper-ingot"] = {chance = 0.20, min = 30, max = 100},
+				["copper-lab"] = {chance = 0.03, min = 1, max = 2},
+				["copper-boiler"] = {chance = 0.03, min = 1, max = 2},
+				["copper-pipe"] = {chance = 0.10, min = 10, max = 50},
+				["copper-pump"] = {chance = 0.02, min = 1, max = 2},
+				["steam-pipe"] = {chance = 0.10, min = 10, max = 50},
+				["rubber-wood"] = {chance = 0.07, min = 10, max = 25},
+				["tin-ingot"] = {chance = 0.20, min = 30, max = 100},
+				["wood"] = {chance = 0.07, min = 10, max = 50},
+				["heavy-armor"] = {chance = 0.03, min = 1, max = 1},
+				["burner-generator-equipment"] = {chance = 0.03, min = 1, max = 1},
+				["copper-roboport-equipment"] = {chance = 0.03, min = 1, max = 1},
+				["steambot"] = {chance = 0.03, min = 2, max = 10},
+				["shotgun"] = {chance = 0.03, min = 1, max = 1},
+				["shotgun-shell"] = {chance = 0.03, min = 10, max = 25}
             }
         },
         -- replaces the chunks with void
@@ -397,6 +415,9 @@ local Config = {
                 {level = 5, price = 100, name = 'light-armor'},
                 {level = 6, price = 6, name = 'small-lamp'},
                 {level = 6, price = 5, name = 'raw-fish'},
+                {level = 7, price = 100, name = 'burner-generator-equipment'},
+                {level = 7, price = 100, name = 'copper-roboport-equipment'},
+                {level = 7, price = 10, name = 'steambot'},
                 {level = 8, price = 1, name = 'stone-brick'},
                 {level = 10, price = 4, name = 'rubber-wood'},
                 {level = 12, price = 200, name = 'heavy-armor'},
@@ -431,7 +452,7 @@ local Config = {
                 {level = 63, price = 40, name = 'rocket'},
                 {level = 71, price = 80, name = 'explosive-rocket'},
                 {level = 78, price = 1000, name = 'satellite'},
-                {level = 100, price = 1, name = 'iron-stick'}
+                {level = 100, price = 100, name = 'cake'}
             },
             -- modifies the experience per alien type, higher is more xp
             alien_experience_modifiers = {
