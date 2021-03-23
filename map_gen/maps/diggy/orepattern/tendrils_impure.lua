@@ -24,6 +24,28 @@
 --           so that it is apparent that every 10 weight = 1%.  eg. weight 860 (86%) + weight 80 (8%) + weight 60 (6%) = 100%
 
 return {
+    { -- tendril water 
+        yield=1,
+        min_distance=40,
+        distance_richness=1,
+        color={r=0/255, g=0/255, b=255/255},
+        noise_settings = {
+            type = "connected_tendril",
+            threshold = 0.05,
+            sources = {
+                {variance=350, weight = 1.000, offset = 000, type="simplex"},
+                {variance=200, weight = 0.350, offset = 150, type="simplex"},
+                {variance=050, weight = 0.050, offset = 300, type="simplex"},
+                {variance=020, weight = 0.015, offset = 450, type="simplex"},
+            }
+        },
+        weights = {
+            ['deepwater-green']    = 1000,
+        },
+        distances = {
+            ['deepwater-green']    = 40
+        },
+    },
     { -- tendril medium large impure iron
         yield=1.15,
         min_distance=64,
@@ -47,9 +69,9 @@ return {
         },
         distances = {
             ['coal']        = 16,
-            ['iron-ore']    = 18,
+            ['iron-ore']    = 64,
             ['stone']       = 15,
-            ['iron-gem-ore']= 7,
+            ['iron-gem-ore']= 128,
         },
     },
     { -- tendril medium large impure copper
@@ -78,7 +100,7 @@ return {
             ['coal']        = 16,
             ['copper-ore']  = 18,
             ['stone']       = 15,
-            ['copper-gem-ore']= 10,
+            ['copper-gem-ore']= 128,
         },
     },
     { -- tendril medium impure tin
@@ -106,7 +128,7 @@ return {
             ['coal']        = 16,
             ['tin-ore']     = 18,
             ['stone']       = 15,
-            ['tin-gem-ore'] = 10,
+            ['tin-gem-ore'] = 128,
         },
     },
     { -- tendril medium impure coal
@@ -132,9 +154,9 @@ return {
         },
         distances = {
             ['coal']        = 16,
-            ['iron-ore']    = 18,
+            ['iron-ore']    = 64,
             ['stone']       = 15,
-            ['coal-gem-ore']= 10,
+            ['coal-gem-ore']= 128,
         },
     },
     { -- tendril medium impure stone
@@ -184,7 +206,7 @@ return {
         },
         distances = {
             ['gold-ore'] = 86,
-            ['gold-gem-ore']= 7,
+            ['gold-gem-ore']= 128,
         },
     },
 
@@ -242,10 +264,10 @@ return {
         },
         distances = {
             ['coal']        = 16,
-            ['iron-ore']    = 18,
+            ['iron-ore']    = 64,
             ['copper-ore']  = 18,
             ['tin-ore']     = 18,
-            ['gold-ore']    = 18,
+            ['gold-ore']    = 64,
             ['stone']       = 15,
         },
     },
@@ -267,111 +289,6 @@ return {
         },
         distances = {
             ['crude-oil']   = 57,
-        },
-    },
-    { -- tendril medium large impure iron
-        yield=1.15,
-        min_distance=64,
-        distance_richness=9,
-        color={r=0/255, g=140/255, b=255/255},
-        noise_settings = {
-            type = "connected_tendril",
-            threshold = 0.05,
-            sources = {
-                {variance=350, weight = 1.000, offset = 000, type="simplex"},
-                {variance=200, weight = 0.350, offset = 150, type="simplex"},
-                {variance=050, weight = 0.050, offset = 300, type="simplex"},
-                {variance=020, weight = 0.015, offset = 450, type="simplex"},
-            }
-        },
-        weights = {
-            ['iron-ore']    = 893,
-            ['coal']        = 61,
-            ['stone']       = 39,
-        },
-        distances = {
-            ['coal']        = 16,
-            ['iron-ore']    = 18,
-            ['stone']       = 15,
-        },
-    },
-    { -- tendril medium large impure copper
-      -- 07/09/2000 start with a little less yeild near origin but grow in richness faster with distance
-        yield=0.85,
-        min_distance=25,
-        distance_richness=6,
-        color={r=255/255, g=55/255, b=0/255},
-        noise_settings = {
-            type = "connected_tendril",
-            threshold = 0.05,
-            sources = {
-                {variance=350, weight = 1.000, offset = 000, type="simplex"},
-                {variance=200, weight = 0.350, offset = 150, type="simplex"},
-                {variance=050, weight = 0.050, offset = 300, type="simplex"},
-                {variance=020, weight = 0.015, offset = 450, type="simplex"},
-            }
-        },
-        weights = {
-            ['copper-ore']  = 890,
-            ['coal']        = 61,
-            ['stone']       = 39,
-        },
-        distances = {
-            ['coal']        = 16,
-            ['copper-ore']  = 18,
-            ['stone']       = 15,
-        },
-    },
-    { -- tendril medium impure tin
-        yield=0.7,
-        min_distance=25,
-        distance_richness=15,
-        color={r=0.3, g=0.3, b=0.6},
-        noise_settings = {
-            type = "connected_tendril",
-            threshold = 0.04,
-            sources = {
-                {variance=350, weight = 1.000, offset = 000, type="simplex"},
-                {variance=200, weight = 0.350, offset = 150, type="simplex"},
-                {variance=050, weight = 0.050, offset = 300, type="simplex"},
-                {variance=020, weight = 0.015, offset = 450, type="simplex"},
-            }
-        },
-        weights = {
-            ['tin-ore']     = 890,
-            ['coal']        = 61,
-            ['stone']       = 39,
-        },
-        distances = {
-            ['coal']        = 16,
-            ['tin-ore']     = 18,
-            ['stone']       = 15,
-        },
-    },
-    { -- tendril medium impure coal
-        yield=0.55,
-        min_distance=25,
-        distance_richness=11,
-        color={r=0/255, g=0/255, b=0/255},
-        noise_settings = {
-            type = "connected_tendril",
-            threshold = 0.03,
-            sources = {
-                {variance=350, weight = 1.000, offset = 000, type="simplex"},
-                {variance=200, weight = 0.350, offset = 150, type="simplex"},
-                {variance=050, weight = 0.050, offset = 300, type="simplex"},
-                {variance=020, weight = 0.015, offset = 450, type="simplex"},
-            },
-        },
-        weights = {
-            ['coal']        = 780,
-            ['iron-ore']    = 160,
-            ['stone']       = 50,
-        },
-        distances = {
-            ['coal']        = 16,
-            ['iron-ore']    = 18,
-            ['stone']       = 15,
         },
     },
 }

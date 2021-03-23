@@ -62,7 +62,7 @@ global.config = {
     landfill_remover = {
         enabled = true,
         -- The tile that is used to replace landfill when it is removed.
-        revert_tile = 'water-mud'
+        revert_tile = 'deepwater-green'
     },
     -- adds a command to scale UPS and movement speed. Use with caution as it might break scenarios that modify movement speed
     performance = {
@@ -146,7 +146,7 @@ global.config = {
     },
     -- adds anti-nuke griefing
     nuke_control = {
-        enabled = true,
+        enabled = false,
         enable_autokick = true,
         enable_autoban = true,
         -- how long a player must be on the server to be allowed to use the nuke
