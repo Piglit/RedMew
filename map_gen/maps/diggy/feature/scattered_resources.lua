@@ -9,15 +9,24 @@ local Template = require 'map_gen.maps.diggy.template'
 local Perlin = require 'map_gen.shared.perlin_noise'
 local Simplex = require 'map_gen.shared.simplex_noise'
 local Utils = require 'utils.core'
+local Task = require 'utils.task'
+local Token = require 'utils.token'
 local random = math.random
 local sqrt = math.sqrt
 local ceil = math.ceil
 local min = math.min
 local pairs = pairs
 local template_resources = Template.resources
+local set_timeout_in_ticks = Task.set_timeout_in_ticks
+local template_insert = Template.insert
 
 -- this
 local ScatteredResources = {}
+
+
+local do_spawn_tile = Token.register(function(params)
+    template_insert(params.surface, {params.tile}, {})
+end)
 
 local function get_name_by_weight(collection, sum)
     local pre_calculated = random()
@@ -150,7 +159,13 @@ function ScatteredResources.register(config)
                 return false  --when overcrowded_resource is true, skip this resource spawn
             end
         end
-
+		
+		if resource_name == 'water' then
+			-- water is slower because for some odd reason it doesn't always want to mine it properly
+			set_timeout_in_ticks(4, do_spawn_tile, { surface = surface, tile = {name = 'deepwater-green', position = position}})
+			return true
+		end
+		
         local range = resource_richness_values[get_name_by_weight(resource_richness_weights, resource_richness_weights_sum)]
         local amount = random(range[1], range[2]) * (1 + ((distance / cluster.distance_richness) * 0.01)) * cluster.yield
 
@@ -233,7 +248,7 @@ function ScatteredResources.register(config)
             end
         end
     end)
-
+	
     if (config.display_ore_clusters) then
         local color = {}
         Event.add(defines.events.on_chunk_generated, function (event)

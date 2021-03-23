@@ -56,7 +56,7 @@ local Config = {
         },
         -- controls the introduction cutscene
         cutscene = {
-            enabled =  true,
+            enabled = true,
             load = function() return require('map_gen.maps.diggy.feature.cutscene') end
         },
         -- core feature
@@ -99,6 +99,8 @@ local Config = {
                 ['rock-huge'] = 2.5,
                 ['out-of-map'] = 1,
                 ['stone-path'] = 0.03,
+				['stone-covering'] = 0.035,
+				['carbon-covering'] = 0.035,
                 ['concrete'] = 0.04,
                 ['hazard-concrete'] = 0.04,
                 ['refined-concrete'] = 0.06,
@@ -152,7 +154,6 @@ local Config = {
                 ['tin-ore'] = {chance = 0.25, min = 30, max = 60},
                 ['tin-plate'] = {chance = 0.10, min = 12, max = 25},
                 ['gold-ore'] = {chance = 0.20, min = 10, max = 55},
-                ['gold-plate'] = {chance = 0.05, min = 5, max = 25},
                 ['steel-plate'] = {chance = 0.05, min = 3, max = 14},
                 ['steam-engine'] = {chance = 0.03, min = 1, max = 2},
                 ['coal'] = {chance = 0.30, min = 30, max = 55},
@@ -176,7 +177,7 @@ local Config = {
                 ['productivity-module-2'] = {chance = 0.01, min = 1, max = 2},
                 ['speed-module'] = {chance = 0.03, min = 1, max = 2},
                 ['speed-module-2'] = {chance = 0.01, min = 1, max = 2},
-                ['small-lamp'] = {chance = 0.05, min = 1, max = 5},
+                ['deadlock-copper-lamp'] = {chance = 0.05, min = 1, max = 5},
 			    ["assembling-machine-1"] = {chance = 0.03, min = 1, max = 2},
 				["bronze-furnace"] = {chance = 0.03, min = 1, max = 6},
 				["bronze-ingot"] = {chance = 0.20, min = 30, max = 100},
@@ -256,7 +257,7 @@ local Config = {
             -- ==============
 
             -- shows the ore locations, only use when debugging (compound_cluster_mode)
-            display_ore_clusters = false,
+            display_ore_clusters = true,
             -- =======================
             -- Scattered mode settings
             -- =======================
@@ -408,12 +409,12 @@ local Config = {
             },
             -- add or remove a table entry to add or remove a unlockable item from the market.
             unlockables = {
-                {level = 2, price = 4, name = 'wood'},
+                {level = 2, price = 1, name = 'wood'},
                 {level = 3, price = 5, name = 'stone-wall'},
                 {level = 4, price = 85, name = 'shotgun'},
                 {level = 4, price = 4, name = 'shotgun-shell'},
                 {level = 5, price = 100, name = 'light-armor'},
-                {level = 6, price = 6, name = 'small-lamp'},
+                {level = 6, price = 6, name = 'deadlock-copper-lamp'},
                 {level = 6, price = 5, name = 'raw-fish'},
                 {level = 7, price = 100, name = 'burner-generator-equipment'},
                 {level = 7, price = 100, name = 'copper-roboport-equipment'},

@@ -23,25 +23,27 @@
 -- weights:  recommend having resource weights for each cluster add up to 1000
 --           so that it is apparent that every 10 weight = 1%.  eg. weight 860 (86%) + weight 80 (8%) + weight 60 (6%) = 100%
 
+local scale = 2.0
+
 local simplex_sources = {
-    {variance=350, weight = 1.000, offset = 000, type="simplex"},
-    {variance=200, weight = 0.350, offset = 150, type="simplex"},
-    {variance=050, weight = 0.050, offset = 300, type="simplex"},
-    {variance=020, weight = 0.015, offset = 450, type="simplex"},
+    {variance=scale*350, weight = 1.000, offset = 000, type="simplex"},
+    {variance=scale*200, weight = 0.350, offset = 150, type="simplex"},
+    {variance=scale*050, weight = 0.050, offset = 300, type="simplex"},
+    {variance=scale*020, weight = 0.015, offset = 450, type="simplex"},
 }
 local simplex_scarce_sources = {
-    {variance=120, weight = 1.000, offset = 000, type="simplex"},
-    {variance=060, weight = 0.300, offset = 150, type="simplex"},
-    {variance=040, weight = 0.200, offset = 300, type="simplex"},
-    {variance=020, weight = 0.090, offset = 450, type="simplex"},
+    {variance=scale*120, weight = 1.000, offset = 000, type="simplex"},
+    {variance=scale*060, weight = 0.300, offset = 150, type="simplex"},
+    {variance=scale*040, weight = 0.200, offset = 300, type="simplex"},
+    {variance=scale*020, weight = 0.090, offset = 450, type="simplex"},
 }
 local distances = {
     ['stone']       = 15,
     ['coal']        = 16,
     ['copper-ore']  = 18,
     ['tin-ore']     = 18,
-    ['iron-ore']    = 64,   --not in starting area
-    ['gold-ore']    = 64,   --not in starting area
+    ['iron-ore']    = 90,   --not in starting area
+    ['gold-ore']    = 90,   --not in starting area
 --    ['uranium-ore'] = 86,
 --    ['crude-oil']   = 57,
     ['iron-gem-ore']= 128,
@@ -60,7 +62,7 @@ return {
         color={r=0/255, g=0/255, b=255/255},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.05,
+            threshold = 0.05/scale,
             sources = {
                 {variance=800, weight = 1.000, offset = 000, type="simplex"},
                 {variance=350, weight = 0.350, offset = 150, type="simplex"},
@@ -69,20 +71,20 @@ return {
             },
         },
         weights = {
-            ['deepwater-green']    = 1000,
+            ['water']    = 1000,
         },
         distances = {
-            ['deepwater-green']    = 40
+            ['water']    = 40
         },
     },
     { -- tendril medium impure coal
         yield=0.55,
         min_distance=25,
         distance_richness=11,
-        color={r=0/255, g=0/255, b=0/255},
+        color={r=0/255, g=255/255, b=0/255},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.03,
+            threshold = 0.03/scale,
             sources = simplex_sources,
         },
         weights = {
@@ -100,7 +102,7 @@ return {
         color={r=100/255, g=100/255, b=100/255},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.028,
+            threshold = 0.028/scale,
             sources = simplex_sources,
         },
         weights = {
@@ -118,7 +120,7 @@ return {
         color={r=255/255, g=55/255, b=0/255},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.05,
+            threshold = 0.05/scale,
             sources = simplex_sources,
         },
         weights = {
@@ -136,7 +138,7 @@ return {
         color={r=0.3, g=0.3, b=0.6},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.04,
+            threshold = 0.03/scale,
             sources = simplex_sources,
         },
         weights = {
@@ -149,12 +151,12 @@ return {
     },
     { -- tendril medium large impure iron
         yield=1.15,
-        min_distance=64,
+        min_distance=128,
         distance_richness=9,
         color={r=0/255, g=140/255, b=255/255},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.05,
+            threshold = 0.05/scale,
             sources = simplex_sources,
         },
         weights = {
@@ -172,7 +174,7 @@ return {
         color={r=0.9, g=0.85, b=0.1},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.025,
+            threshold = 0.025/scale,
             sources = simplex_scarce_sources,
         },
         weights = {
@@ -185,10 +187,10 @@ return {
         yield=0.2,
         min_distance=128,
         distance_richness=12,
-        color={r=0/255, g=0/255, b=0/255},
+        color={r=0/255, g=60/255, b=0/255},
         noise_settings = {
             type = "connected_tendril",
-            threshold = 0.025,
+            threshold = 0.025/scale,
             sources = simplex_scarce_sources,
         },
         weights = {
@@ -202,22 +204,22 @@ return {
         yield=0.22,
         min_distance=10,
         distance_richness=12,
-        color={r=0/255, g=0/255, b=0/255},
+        color={r=100/255, g=0/255, b=100/255},
         noise_settings = {
             type = "fragmented_tendril",
-            threshold = 0.06,
-            discriminator_threshold = 1.2,
+            threshold = 0.06/scale,
+            discriminator_threshold = 1.2/scale,
             sources = {
-                {variance=025, weight = 1.000, offset = 600, type="simplex"},
-                {variance=015, weight = 0.500, offset = 750, type="simplex"},
-                {variance=010, weight = 0.250, offset = 900, type="simplex"},
-                {variance=05, weight = 0.100, offset =1050, type="simplex"},
+                {variance=scale*025, weight = 1.000, offset = 600, type="simplex"},
+                {variance=scale*015, weight = 0.500, offset = 750, type="simplex"},
+                {variance=scale*010, weight = 0.250, offset = 900, type="simplex"},
+                {variance=scale*05, weight = 0.100, offset =1050, type="simplex"},
             },
             discriminator = {
-                {variance=120, weight = 1.000, offset = 000, type="simplex"},
-                {variance=060, weight = 0.300, offset = 150, type="simplex"},
-                {variance=040, weight = 0.200, offset = 300, type="simplex"},
-                {variance=020, weight = 0.090, offset = 450, type="simplex"},
+                {variance=scale*120, weight = 1.000, offset = 000, type="simplex"},
+                {variance=scale*060, weight = 0.300, offset = 150, type="simplex"},
+                {variance=scale*040, weight = 0.200, offset = 300, type="simplex"},
+                {variance=scale*020, weight = 0.090, offset = 450, type="simplex"},
             },
         },
         weights = {
