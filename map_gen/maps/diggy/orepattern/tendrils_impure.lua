@@ -61,7 +61,12 @@ return {
         noise_settings = {
             type = "connected_tendril",
             threshold = 0.05,
-            sources = simplex_sources,
+            sources = {
+                {variance=800, weight = 1.000, offset = 000, type="simplex"},
+                {variance=350, weight = 0.350, offset = 150, type="simplex"},
+                {variance=200, weight = 0.050, offset = 300, type="simplex"},
+                {variance=050, weight = 0.015, offset = 450, type="simplex"},
+            },
         },
         weights = {
             ['deepwater-green']    = 1000,
