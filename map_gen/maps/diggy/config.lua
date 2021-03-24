@@ -257,7 +257,7 @@ local Config = {
             -- ==============
 
             -- shows the ore locations, only use when debugging (compound_cluster_mode)
-            display_ore_clusters = true,
+            display_ore_clusters = false,
             -- =======================
             -- Scattered mode settings
             -- =======================
