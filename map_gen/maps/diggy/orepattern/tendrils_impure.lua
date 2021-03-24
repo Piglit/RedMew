@@ -99,7 +99,7 @@ return {
         yield=0.38,
         min_distance=25,
         distance_richness=11,
-        color={r=100/255, g=100/255, b=100/255},
+        color={r=200/255, g=200/255, b=200/255},
         noise_settings = {
             type = "connected_tendril",
             threshold = 0.028/scale,
@@ -113,10 +113,9 @@ return {
         distances = distances,
     },
     { -- tendril medium large impure copper
-      -- 07/09/2000 start with a little less yeild near origin but grow in richness faster with distance
-        yield=0.85,
+        yield=1.0,
         min_distance=25,
-        distance_richness=6,
+        distance_richness=10,
         color={r=255/255, g=55/255, b=0/255},
         noise_settings = {
             type = "connected_tendril",
@@ -132,7 +131,7 @@ return {
         distances = distances,
     },
     { -- tendril medium impure tin
-        yield=0.7,
+        yield=0.5,
         min_distance=25,
         distance_richness=15,
         color={r=0.3, g=0.3, b=0.6},
@@ -236,7 +235,7 @@ return {
         yield=1.2,
         min_distance=57,
         distance_richness=9,
-        color={r=0/255, g=255/255, b=255/255},
+        color={r=100/255, g=100/255, b=100/255},
         noise_settings = {
             type = "cluster",
             threshold = 0.40,
